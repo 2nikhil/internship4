@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Add and delete
+	</title>
+
+<script src="js/jquery-3.0.0.min.js"></script>
+<script src="js/bootstrap.min.js" ></script>
+<script src="js/mi_asset-management.js"></script>
+<script src="js/bootstrap.min.js" ></script>
+
+<link rel="stylesheet"  href="css/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css" href="css/add-assets.css">
+<link rel="stylesheet" type="text/css" href="css/mi_front_end.css">
+<script src="js/sweetalert.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+</head>
+<body>
+
+
+   <div id="styling">
+        <div style="cursor:pointer;position:absolute" onclick="redirect()">
+            <img src="images/homepic.png" style="height:60px;width:60px;position:absolute;margin-left:70px;margin-top:10px;">
+            <h2 style="color:white;margin-left:145px">MobileIron</h2>
+        </div>
+        <script>
+            function redirect() {
+                location.href = "http://localhost:8080/mi_asset-management/mi_front_end.html";
+            }
+        </script>
+
+
+        <!--below is navigation bar code -->
+        <ul>
+            <li><a href="http://localhost:8080/mi_asset-management/mi_front_end.html">HOME</a></li>
+            <li><a href="http://localhost:8080//mi_asset-management/user_account.html">DEVICE CHECKIN</a></li>
+            <li><a href="http://localhost:8080/mi_asset-management/register.html">RESERVE DEVICE</a></li>
+            <li><a href="http://localhost:8080/mi_asset-management/user_account.html">MY DEVICES</a></li>
+        </ul>
+
+
+        <style>
+            ul {
+                list-style-type: none;
+                margin-left: 380px;
+             
+                overflow: hidden;
+            }
+            
+            li {
+                float: left;
+                margin-top: 20px;
+            }
+            
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 5px 16px;
+                text-decoration: none;
+                margin-right: 70px;
+            }
+            
+            li:hover {
+                background-color: #8db0f2;
+            }
+            
+            a {
+                text-decoration: none !important;
+            }
+        </style>
+</div>
+
+
+
+       <h2 align="center" style="margin-top:100px">ADD ASSETS</h2>
+
+
+
+
+<form method="post" action="http://localhost:8080/mi_asset-management/rest/assets" id="form" style="margin-top:30px;" onsubmit="return validateform()" name="submitting_form">
+<div id="whole-body" style="margin-left:100px">
+<h3 class="header"> Asset details </h3>
+
+<div class="contents">
+
+<p>
+<label>Asset number: </label>   <input type="text"  class="input" name="assetnumber" ">
+</p>
+
+<p>
+<label>Color: </label>          <input type="text"  class="input" name="color" >
+</p>
+
+<!--
+<p>
+<label>device purchase date:</label> <input type="text"  class="input" name="device_purchasedate">
+</p>
+-->
+
+<p>
+<label>Is headquarters device:</label> <input type="text"   class="input" name="isheadquarters">&nbsp;&nbsp;<b>true/false</b>
+</p>
+</div>
+
+<br>
+<br>
+
+<h3 class="header" >Device Status</h3>
+
+<div class="contents">
+
+<p>
+<label>Allowed upgrade or not :</label> <input type="text" class="input" name="allowedupgradeornot">&nbsp;&nbsp;<b>true/false</b>
+</p>
+
+<p>
+<label>device type: </label> <input type="text"  class="input" name="devicetype">
+</p>
+
+<p>
+<label>is rooted or jail broken device:</label> <input type="text"  class="input" name="isrootedorjailbroken">&nbsp;&nbsp;<b>true/false</b>
+</p>
+
+<p>
+<label>department</label><input type="text" class="input" name="department">
+</p>
+
+</div>
+
+
+<br>
+<br>
+
+<h3 class="header"> Manufaturer details</h3>
+<div class="contents">
+
+<p>
+<label>manufacturer: </label> <input type="text"  class="input" name="manufacturer">
+</p>
+
+<p>
+<label>MDI_no:</label> <input type="text"  class="input" name="MDT_no">
+</p>
+
+<p>
+<label>model_no: </label> <input type="text"  class="input" name="modelnumber">
+</p>
+
+<p>
+<label>IMEI:</label> <input type="text"  class="input" name="IMEI">
+</p>
+
+
+</div>
+
+<h3 class="header"> Comments </h3>
+<textarea rows='10' cols='70' id="text-comments" name="comments">
+	
+</textarea>
+<br>
+<br>
+<!--<button type="button" class="btn btn-success btn-lg" id="submit">Submit</button> -->
+
+<input type="submit" value="submit" class="button" >
+
+<br>
+<br>
+</div>
+</form>
+
+
+<script >
+	function validateform(){
+		var asset_number= document.forms["submitting_form"]["assetnumber"].value;
+		if(asset_number=="" || asset_number==null ){
+			swal("please enter asset number");
+			return false;
+		}
+
+        var isheadquarters=document.forms["submitting_form"]["isheadquarters"].value;
+        var allowedupgradeornot=document.forms["submitting_form"]["allowedupgradeornot"].value;
+        var isheadquarters=document.forms["submitting_form"]["isrootedorjailbroken"].value;
+
+      /* var combined=isheadquarters+allowedupgradeornot+isheadquarters;
+       if(combined.match("true"|"false" g)<3 && combined.match("true"|"false" g)>0 ){
+        swal("please enter true/false not in any other format")
+        return false;
+       }
+       */
+
+       
+
+
+	}
+</script>
+ 
+</body>
+</html>
